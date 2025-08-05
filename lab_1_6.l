@@ -10,9 +10,9 @@ FLOAT       {DIGIT}+\.{DIGIT}+([eE][+-]?{DIGIT}+)?
 
 %%
 
-"/*"([^*]|\*+[^*/])*\*+"/"  { }
+"/*"([^*]|\*+[^*/])*\*+"/"  {printf("OPERATOR:\t\t%s\n", yytext);}
 "//".* { }
-[ \t\n]+                     { }
+[ \t\n]+                     {printf(" "); }
 
 "auto"      { printf("KEYWORD:\t\t%s\n", yytext); }
 "break"     { printf("KEYWORD:\t\t%s\n", yytext); }
