@@ -3,6 +3,7 @@ int word_count = 0;
 int vowel_count = 0;
 int line_count = 0;
 int char_count = 0;
+#include<ctype.h>
 %}
 
 %%
