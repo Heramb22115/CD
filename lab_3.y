@@ -46,6 +46,7 @@ expr : expr '+' expr      { $$ = $1 + $3; }
      | SIN '(' expr ')'   { $$ = sin($3); }
      | COS '(' expr ')'   { $$ = cos($3); }
      | TAN '(' expr ')'   { $$ = tan($3); }
+     | POW '('expr','expr')'    { $$=pow($3,$5); }
      | LOG '(' expr ')'   {
                             if ($3 <= 0.0) {
                                 yyerror("Logarithm of non-positive number");
