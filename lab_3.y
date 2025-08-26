@@ -14,7 +14,7 @@ void yyerror(const char *s) { fprintf(stderr, "Error: %s\n", s); }
 }
 
 %token <dval> NUMBER
-%token SIN COS TAN LOG
+%token SIN COS TAN LOG POW
 
 %type <dval> expr
 
@@ -61,7 +61,7 @@ expr : expr '+' expr      { $$ = $1 + $3; }
 
 int yylex() {
     int c;
-    // Skip whitespace
+    
     while ((c = getchar()) == ' ' || c == '\t');
 
     
