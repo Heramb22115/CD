@@ -77,6 +77,7 @@ int yylex() {
         if (strcmp(sbuf, "sin") == 0) return SIN;
         if (strcmp(sbuf, "cos") == 0) return COS;
         if (strcmp(sbuf, "tan") == 0) return TAN;
+        if(strcmp(sbuf,"pow")== 0) return POW();
         if (strcmp(sbuf, "log") == 0) return LOG;
         
         
