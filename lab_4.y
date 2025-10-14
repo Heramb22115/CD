@@ -15,7 +15,7 @@ typedef struct {
 } Tac;
 
 Tac tac_table[100]; 
-int tac_index = 0;  
+int tac_index = 0;
 int temp_count = 0; 
 
 char* new_temp() {
@@ -24,7 +24,6 @@ char* new_temp() {
     return temp;
 }
 
-
 void add_tac(char* op, char* arg1, char* arg2, char* result) {
     strcpy(tac_table[tac_index].op, op);
     strcpy(tac_table[tac_index].arg1, arg1);
@@ -32,7 +31,6 @@ void add_tac(char* op, char* arg1, char* arg2, char* result) {
     strcpy(tac_table[tac_index].result, result);
     tac_index++;
 }
-
 
 void print_code();
 %}
@@ -49,7 +47,7 @@ void print_code();
 
 %%
 line: ID '=' expr ';' { add_tac("=", $3, "", $1); }
-    | expr ';'      { }
+    | expr ';'      { /* Expression without assignment */ }
     ;
 
 expr: expr '+' term {
