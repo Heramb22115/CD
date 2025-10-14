@@ -30,15 +30,18 @@ void print_code();
 
 %union { char* id; }
 %token <id> ID NUM
+%token EOL      /* ADDED: New token for End of Line */
+
 %type <id> expr term factor
 
 %left '+' '-'
 %left '*' '/'
-%right UMINUS   
+%right UMINUS
 
 %%
-line: ID '=' expr ';' { add_tac("=", $3, "", $1); }
-    | expr ';'      { }
+/* MODIFIED: Grammar now uses EOL instead of ';' */
+line: ID '=' expr EOL { add_tac("=", $3, "", $1); }
+    | expr EOL      { }
     ;
 
 expr: expr '+' term { $$ = new_temp(); add_tac("+", $1, $3, $$); }
@@ -54,11 +57,11 @@ term: term '*' factor { $$ = new_temp(); add_tac("*", $1, $3, $$); }
 factor: '(' expr ')'    { $$ = $2; }
       | ID              { $$ = $1; }
       | NUM             { $$ = $1; }
-      /* New rule for unary minus */
       | '-' factor %prec UMINUS { $$ = new_temp(); add_tac("UMINUS", $2, "", $$); }
       ;
 %%
 
+/* The rest of the file (main, print_code, yyerror) remains exactly the same */
 void yyerror(char *s) { fprintf(stderr, "Error: %s\n", s); }
 
 int main() {

@@ -9,7 +9,8 @@ void yyerror(char *);
 [0-9]+                  { yylval.id = strdup(yytext); return NUM; }
 [-+*/=()]               { return yytext[0]; }
 [ \t]                   ; /* Skip whitespace */
-\n                      { return 0; } /* End of input */
+\n                      { return EOL; }   /* MODIFIED: Return an End-of-Line token */
+<<EOF>>                 { return 0; }     /* ADDED: Proper end-of-file handling */
 .                       { yyerror("Invalid character"); }
 %%
 
