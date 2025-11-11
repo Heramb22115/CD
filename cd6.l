@@ -20,9 +20,3 @@
 %%
 int yywrap() { return 1; }
 
-//commands
-yacc -d cd6.y        
-lex cd6.l            
-cc lex.yy.c y.tab.c  
-./a.out
-
