@@ -1,19 +1,15 @@
 %{
 #include <stdio.h>
 %}
-
 DIGIT       [0-9]
 LETTER      [a-zA-Z_]
 ID          {LETTER}({LETTER}|{DIGIT})*
 INTEGER     {DIGIT}+
 FLOAT       {DIGIT}+\.{DIGIT}+([eE][+-]?{DIGIT}+)?
-
 %%
-
 "/*"([^*]|\*+[^*/])*\*+"/"  {printf("OPERATOR:\t\t%s\n", yytext);}
 "//".* { }
 [ \t\n]+                     {printf(" "); }
-
 "auto"      { printf("KEYWORD:\t\t%s\n", yytext); }
 "break"     { printf("KEYWORD:\t\t%s\n", yytext); }
 "case"      { printf("KEYWORD:\t\t%s\n", yytext); }
@@ -46,12 +42,10 @@ FLOAT       {DIGIT}+\.{DIGIT}+([eE][+-]?{DIGIT}+)?
 "void"      { printf("KEYWORD:\t\t%s\n", yytext); }
 "volatile"  { printf("KEYWORD:\t\t%s\n", yytext); }
 "while"     { printf("KEYWORD:\t\t%s\n", yytext); }
-
 {FLOAT}     { printf("CONSTANT (FLOAT):\t%s\n", yytext); }
 {INTEGER}   { printf("CONSTANT (INTEGER):\t%s\n", yytext); }
 '(\\.|[^'\\])' { printf("CONSTANT (CHAR):\t%s\n", yytext); }
 \"(\\.|[^"\\])*\" { printf("STRING LITERAL:\t%s\n", yytext); }
-
 {ID}        { printf("IDENTIFIER:\t\t%s\n", yytext); }
 
 "++" | "--" | "==" | "!=" | ">=" | "<=" | "&&" | "||" |

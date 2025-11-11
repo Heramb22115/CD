@@ -17,9 +17,3 @@
 %%
 
 int yywrap() { return 1; }
-
-//commands
-lex cd5.l          
-yacc -d cd5.y      
-cc lex.yy.c y.tab.c
-./a.out

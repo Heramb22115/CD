@@ -4,7 +4,6 @@
 #include <stdlib.h>
 #include <math.h>
 #include <string.h>
-
 int yylex();
 void yyerror(const char *s) { fprintf(stderr, "Error: %s\n", s); }
 %}

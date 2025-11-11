@@ -1,12 +1,10 @@
 %{
 #include <stdio.h>
 %}
-
 %%
 [Ww][Oo][Rr][Ll][Dd]   { printf("Globe"); }
 .|\n                   { ECHO; }
 %%
-
 int main(int argc, char *argv[]) {
     if (argc < 2) {
         printf("Usage: %s <filename>\n", argv[0]);
